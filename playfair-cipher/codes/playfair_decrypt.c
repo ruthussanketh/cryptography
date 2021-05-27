@@ -3,7 +3,7 @@
 #include <string.h>
 #define SIZE 100
 
-// Function to decrypt using Playfair Cipher
+// Function to decrypt using the Playfair Cipher
 void PlayfairDeCrypt(char str[], char keystr[])
 {
 	char ps, ks, keyT[5][5];
@@ -24,16 +24,6 @@ void PlayfairDeCrypt(char str[], char keystr[])
 		}
 	}
 
-	// Remove all spaces in a string
-	int removeSpaces(char* plain, int ps)
-	{
-		int i, count = 0;
-		for (i = 0; i < ps; i++)
-			if (plain[i] != ' ')
-				plain[count++] = plain[i];
-		plain[count] = '\0';
-		return count;
-	}
 
 	// generates the 5x5 key square
 	void generateKeyTable(char keystr[], int ks,
@@ -161,7 +151,6 @@ int main()
 	printf("Key text: %s\n", keystr);
 
 
-	//note that ciphertext is to be entered in upper case letters
 	printf("Enter the ciphertext: ");
 	scanf("\n");
 	scanf("%[^\n]s", &str);
