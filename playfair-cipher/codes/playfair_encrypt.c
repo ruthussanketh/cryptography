@@ -76,6 +76,28 @@ void PlayfairCrypt(char str[], char keystr[])
             }
         }
     }
+    
+    // Function to make the plain text length even, and make pairs unidentical.
+    int prepare(char str[], int ptrs)
+    {
+        int i, j, subs_s = ptrs;
+        for (i = 0; i < subs_s; i += 2) {
+            if(str[i]==str[i+1]){
+                for(j=subs_s; j>i+1; j--){
+                   str[j]=str[j-1];
+                }
+                str[i+1]='x';
+                subs_s+=1;
+            }
+        }
+        str[subs_s]='\0';
+
+        if (subs_s % 2 != 0) {
+            str[subs_s++] = 'z';
+            str[subs_s] = '\0';
+        }
+        return subs_s;
+    }
 
     // Function to search for the characters of a digraph in the key square and return their position
     void search(char keyT[5][5], char a, char b, int arr[])
@@ -101,28 +123,6 @@ void PlayfairCrypt(char str[], char keystr[])
                 }
             }
         }
-    }
-
-    // Function to make the plain text length even, and make pairs unidentical.
-    int prepare(char str[], int ptrs)
-    {
-        int i, j, subs_s = ptrs;
-        for (i = 0; i < subs_s; i += 2) {
-            if(str[i]==str[i+1]){
-                for(j=subs_s; j>i+1; j--){
-                   str[j]=str[j-1];
-                }
-                str[i+1]='x';
-                subs_s+=1;
-            }
-        }
-        str[subs_s]='\0';
-
-        if (subs_s % 2 != 0) {
-            str[subs_s++] = 'z';
-            str[subs_s] = '\0';
-        }
-        return subs_s;
     }
 
     // Function for performing the encryption
