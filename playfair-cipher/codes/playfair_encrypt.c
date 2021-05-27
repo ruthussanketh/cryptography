@@ -4,7 +4,7 @@
 
 #define SIZE 100
 
-// Function to encrypt using Playfair Cipher
+// Function to encrypt using the Playfair Cipher
 void PlayfairCrypt(char str[], char keystr[])
 {
     char keyT[5][5], ks, ps;
@@ -169,7 +169,6 @@ int main()
     scanf("%[^\n]s", &keystr);
     printf("Key text: %s\n", keystr);
 
-    // Plaintext to be encrypted - entered in lower case letters
     printf("Enter the plaintext: ");
     scanf("\n");
     scanf("%[^\n]s", &str);
